@@ -1,0 +1,51 @@
+﻿@model Staj1_MvcProje.Models.Entity.TBLURUNLER
+@{
+    ViewBag.Title = "YeniUrun";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<form method="post" class="form-group">
+    <div>
+        <label>Ürün Adı</label>
+        <input type="text" class="form-control" name="URUNAD" placeholder="Ürün adı giriniz" required="" />
+    </div>
+    <br />
+    <div>
+        <label>Ürün Kategorisi</label>
+        @Html.DropDownListFor(m => m.TBLKATEGORILER.KATEGORIID, (List<SelectListItem>)ViewBag.dgr, new { @class = "form-control" })
+    </div>
+    <br />
+    <div>
+        <label>Ürün Fiyatı</label>
+        <input type="text" class="form-control" name="FIYAT" placeholder="Ürün fiyatını giriniz" />
+    </div>
+    <br />
+    <div>
+        <label>Ürün Markası</label>
+        <input type="text" class="form-control" name="MARKA" placeholder="Marka adı giriniz" required="" />
+    </div>
+    <br />
+    @*<div>
+            <label>Ürün Resmi</label>
+            <input type="file" name="RESIM" class=" form-control" />
+        </div>*@
+    <br />
+    <div>
+        <label>Kalan Stok</label>
+        <input type="text" class="form-control" name="STOK" placeholder="Stok sayısı giriniz" />
+    </div>
+    <br />
+    <div>
+        <label> Ürün Statüsü</label>
+        <input type="text" class="form-control" name="STATUS" placeholder="True/False giriniz" />
+    </div>
+    <div style="margin-top:15px">
+        <button class="btn btn-info">Ürün Ekle</button>
+    </div>
+</form>
+@*<form action="/Urunler/YeniUrun" method="post" enctype="multipart/form-data">
+            <label for="data">Ürün resmi</label>
+            <input type="file" name="RESIM" />
+    </form>*@
+
+

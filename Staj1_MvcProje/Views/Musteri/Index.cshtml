@@ -1,0 +1,37 @@
+﻿@using Staj1_MvcProje.Models.Entity
+@model List<TBLMUSTERILER>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>Müşteriler</h2>
+<br />
+
+<table class="table table-bordered" id="tblMusteriler">
+    <thead>
+        <tr>
+            <th>MÜŞTERİ ID</th>
+            <th>MÜŞTERİ ADI</th>
+            <th>MÜŞTERİ SOYADI</th>
+            <th>STATÜ</th>
+            <th>SİL</th>
+            <th>GÜNCELLE</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var mstr in Model)
+        {
+            <tr>
+                <td>@mstr.MUSTERIID</td>
+                <td>@mstr.MUSTERIAD</td>
+                <td>@mstr.MUSTERISOYAD</td>
+                <td>@mstr.STATUS</td>
+                <td><a href="/MUSTERI/SIL/@mstr.MUSTERIID" onclick="return confirm('Silmek istediğinizden emin misiniz?')" class="btn" style="background-color: #e06251; color: white ">SİL</a></td>
+                <td><a href="/MUSTERI/MusteriGuncel/@mstr.MUSTERIID" class="btn" style="background-color: #8bbf32; color: white ">GÜNCELLE</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="/Musteri/YeniMusteri/" class="btn btn-primary">YENİ MÜŞTERİ EKLE</a>
+

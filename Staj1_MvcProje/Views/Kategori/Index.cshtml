@@ -1,0 +1,51 @@
+﻿
+@using Staj1_MvcProje.Models.Entity
+@using PagedList;
+@using PagedList.Mvc;
+@model List<TBLKATEGORILER>
+@*model PagedList.IPagedList<TBLKATEGORILER>*@
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>Kategoriler</h2>
+<br />
+
+<table class="table table-bordered" id="tblKategoriler">
+    <thead>
+        <tr>
+            <th>KATEGORİ ID</th>
+            <th>KATEGORİ ADI</th>
+            @if (User.IsInRole("Admin"))
+            {                
+                <th>SİL</th>
+                <th>GÜNCELLE</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var ktgr in Model)
+        {
+            <tr>
+                <td>@ktgr.KATEGORIID</td>
+                <td>@ktgr.KATEGORIAD</td>
+
+                @if (User.IsInRole("Admin"))
+                {
+                    
+                    <td><a href="/KATEGORI/SIL/@ktgr.KATEGORIID" onclick="return confirm('Silmek istediğinizden emin misiniz?')" class="btn" style="background-color: #e06251; color: white ">SİL</a></td>
+                    <td><a href="/KATEGORI/KategoriGuncel/@ktgr.KATEGORIID" class="btn" style="background-color: #8bbf32; color: white ">GÜNCELLE</a></td>
+                }
+
+            </tr>
+        }
+    </tbody>
+</table>
+@*Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }))*@
+
+@if (User.IsInRole("Admin"))
+{
+    <td><a href="/KATEGORI/YeniKategori/" class="btn btn-primary">YENİ KATEGORİ EKLE</a></td>
+}

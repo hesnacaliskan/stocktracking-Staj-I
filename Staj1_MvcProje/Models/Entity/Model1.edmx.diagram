@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1815bfb84e084703bcd6d42f78875ccf" Name="Diagram1" ZoomLevel="98">
+        <EntityTypeShape EntityType="MvcDbStokModel.sysdiagrams" Width="1.5" PointX="11.125" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MvcDbStokModel.TBLKATEGORILER" Width="1.5" PointX="2.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MvcDbStokModel.TBLKULLANICI" Width="1.5" PointX="9.125" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MvcDbStokModel.TBLMUSTERILER" Width="1.5" PointX="3.625" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MvcDbStokModel.TBLURUNLER" Width="1.5" PointX="4.625" PointY="0.5" IsExpanded="true" />
+        <AssociationConnector Association="MvcDbStokModel.FK_TBLURUNLER_TBLKATEGORILER" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MvcDbStokModel.TBLSEPETT" Width="1.5" PointX="6.75" PointY="1.25" />
+        <AssociationConnector Association="MvcDbStokModel.FK_TBLSEPETT_TBLKULLANICI" />
+        <AssociationConnector Association="MvcDbStokModel.FK_TBLSEPETT_TBLURUNLER" ManuallyRouted="false" >
+        </AssociationConnector>
+        <EntityTypeShape EntityType="MvcDbStokModel.TBLLOG" Width="1.5" PointX="1.5" PointY="4.625" />
+        <EntityTypeShape EntityType="MvcDbStokModel.TBLIPTALL" Width="1.5" PointX="8.375" PointY="4.125" />
+        <AssociationConnector Association="MvcDbStokModel.FK_TBLIPTALL_TBLKULLANICI" />
+        <AssociationConnector Association="MvcDbStokModel.FK_TBLIPTALL_TBLURUNLER" />
+        <EntityTypeShape EntityType="MvcDbStokModel.TBLSATISLAR" Width="1.5" PointX="5.875" PointY="4.125" />
+        <AssociationConnector Association="MvcDbStokModel.FK_TBLSATISLAR_TBLKULLANICI" />
+        <AssociationConnector Association="MvcDbStokModel.FK_TBLSATISLAR_TBLURUNLER" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,69 @@
+﻿@using Staj1_MvcProje.Models.Entity
+@model List<TBLURUNLER>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>Ürünler</h2>
+<br />
+
+<table class="table table-bordered" id="tblUrunler">
+    <thead>
+        <tr>
+            @*<th>ÜRÜN RESMİ</th>*@
+            <th>ÜRÜN ID</th>
+            <th>ÜRÜN ADI</th>
+            <th>ÜRÜN MARKASI</th>
+            <th>ÜRÜN KATEGORİSİ</th>
+            <th>ÜRÜN FİYATI</th>
+            <th>KALAN STOK</th>
+
+            @if (User.IsInRole("Admin"))
+            {
+                <th>STATÜ</th>
+                <th>SİL</th>
+                <th>GÜNCELLE</th>
+            }
+
+            @if (User.IsInRole("Kullanıcı"))
+            {
+                <th>SEPETE EKLE</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var urn in Model)
+        {
+            <tr>
+                <td>@urn.URUNID</td>
+                @*<td><img src="/URUNLER/ResimYukle/@urn.RESIM" width="80" height="80"/></td>*@
+                <td>@urn.URUNAD</td>
+                <td>@urn.MARKA</td>
+                <td>@urn.TBLKATEGORILER.KATEGORIAD</td>
+                <td>@urn.FIYAT</td>                
+                <td>@urn.STOK</td>
+
+                @if (User.IsInRole("Admin"))
+                { 
+                    <td>@urn.STATUS</td>
+                    <td><a href="/URUNLER/SIL/@urn.URUNID" onclick="return confirm('Silmek istediğinizden emin misiniz?')" class="btn" style="background-color: #e06251; color: white ">SİL</a></td>
+                    <td><a href="/URUNLER/UrunGuncel/@urn.URUNID" class="btn" style="background-color: #8bbf32; color: white ">GÜNCELLE</a></td>
+                }
+
+                @if (User.IsInRole("Kullanıcı"))
+                {
+                    <td><a href="/SEPET/SepeteEkle/@urn.URUNID" class="btn" style="background-color: #EFAB1F; color: white ">Sepete Ekle</a></td>                    
+                        
+                }                
+            </tr>
+
+        }
+    </tbody>
+</table>
+
+@if (User.IsInRole("Admin"))
+{
+    <a href="/URUNLER/YeniUrun/" class="btn btn-primary">YENİ ÜRÜN EKLE</a>
+
+}

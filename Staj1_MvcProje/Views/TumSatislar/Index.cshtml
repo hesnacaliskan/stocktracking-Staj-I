@@ -1,0 +1,44 @@
+﻿@using Staj1_MvcProje.Models.Entity
+@using PagedList;
+@using PagedList.Mvc;
+@model List<TBLSATISLAR>
+@*model IPagedList<Staj1_MvcProje.Models.Entity.TBLSATISLAR>*@
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>Satış Listesi</h2>
+<br />
+
+<table class=" table table-bordered" id="tblTumsatislar">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>MÜŞTERİ ADI</th>
+            <th>SOYADI</th>
+            <th>ÜRÜN ADI</th>
+            <th>ADET</th>
+            <th>FİYAT</th>
+            <th>TARİH</th>
+        </tr>
+    </thead>    
+    <tbody>
+
+        @foreach (var satis in Model)
+        {
+            <tr>
+                <td>@satis.SATISID</td>
+                <td>@satis.TBLKULLANICI.ISIM</td>
+                <td>@satis.TBLKULLANICI.SOYISIM</td>
+                <td>@satis.TBLURUNLER.URUNAD</td>                
+                <td>@satis.ADET</td>
+                <td>@satis.FIYAT</td>
+                <td>@Convert.ToDateTime(satis.TARIH).ToString("dd/MM/yy")</td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+@*Html.PagedListPager(Model, sayfa => Url.Action("Index", new {sayfa}),PagedListRenderOptions.Classic)*@
+

@@ -1,0 +1,42 @@
+﻿@using Staj1_MvcProje.Models.Entity
+@model List<TBLSEPETT>
+@{
+    ViewBag.Title = "HepsiniSatinAl";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div class=" container">
+    <div class=" container">
+        <h2> Selam @Session["Ad"] @Session["Soyad"] Satın Alma sayfasına Hoş Geldiniz!</h2>
+    </div>
+</div>
+<div class="container">
+    @using(Html.BeginForm("HepsiniSatinAl2", "Satis", FormMethod.Post, new {@class = "container" }))
+    {
+        foreach(var item in Model)
+       {
+            <div class="form-group">
+                ID : @Html.DisplayFor(m=>item.ID)
+            </div>
+            <div class=" form-group">
+                Ürün Adı : @Html.DisplayFor(m=>item.TBLURUNLER.URUNAD)
+            </div>
+            <div class=" form-group">
+                Adet: @Html.DisplayFor(m=>item.ADET)
+            </div>
+            <div class="form-group">
+                Fiyat: @Html.DisplayFor(m=>item.FIYAT)
+            </div>
+       }
+        <p style="color:red; text-align:center">@ViewBag.Tutar</p>
+        <div class=" container">
+            <div class=" form-group" style="float:left">
+                <button class="btn" style="background-color: #F4817C; color: white ">Onay</button>
+            </div>
+            <div style=" float:right">
+                <a href="/Sepet/Index" class="btn" style="background-color: #E2A867; color: white ">İptal</a>
+            </div>
+        </div>
+    }
+</div>
+

@@ -1,0 +1,47 @@
+﻿@model Staj1_MvcProje.Models.Entity.TBLKULLANICI
+@{
+    ViewBag.Title = "Kaydol";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post" class="form-group">
+    <br />
+    <div>
+        <label>Ad</label>
+        @Html.TextBoxFor(m => m.ISIM, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ISIM, " ", new { @style = "color:orange" })
+    </div>
+    <br />
+    <div>
+        <label>Soyad</label>
+        @Html.TextBoxFor(m => m.SOYISIM, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.SOYISIM, " ", new { @style = "color:orange" })
+    </div>
+    <br />
+    <div>
+        <label>E-posta</label>
+        @Html.TextBoxFor(m => m.AD, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.AD, " ", new { @style = "color:orange" })
+    </div>
+    <br />
+    <div>
+        <label>Şifre</label>
+        @Html.TextBoxFor(m => m.ŞİFRE, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ŞİFRE, " ", new { @style = "color:orange" })
+    </div>
+    <br />
+    <div>
+        <label>Kullanıcı Rolü: </label>
+        @*@Html.TextBoxFor(m => m.ROL, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.ROL, " ", new { @style = "color:orange" })*@
+        <select name="ROL" id="ROL">
+            <option value="Kullanıcı">Kullanıcı</option>
+            <option value="Admin">Admin</option>
+        </select>
+    </div>
+    <br />
+    <div style="margin-top:15px">
+        <button class="btn" style="background-color: #F67280; color: white ">Kayıt Ol</button>
+    </div>
+</form>
+

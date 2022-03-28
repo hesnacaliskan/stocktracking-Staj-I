@@ -1,0 +1,104 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>VTYS ODEV</title>
+    <link rel="shortcut icon" href="~/icon.ico" type="image/x-icon" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    
+
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#" style="background-color: #068587; color: white; background-size:200px">
+                    <img src="~/fonts/Daco_4209656.png" width="36" height="36" class="d-inline-block align-top" alt="" style="position:relative; top:-10px">
+
+                </a>
+                <a class="navbar-brand" href="#" style="background-color: #068587; color: white">VTYS ÖDEV</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="/Anasayfa/Index/">Anasayfa</a></li>
+                <li><a href="/Kategori/Index/">Kategoriler</a></li>
+                <li><a href="/Urunler/Index/">Ürünler</a></li>
+                @*<li><a href="/Log/Index/">Kayıt</a></li>*@
+            </ul>
+
+            @if (User.IsInRole("Admin"))
+            {
+                <ul class="nav navbar-nav">
+
+                    <li><a href="/Musteri/Index/">Müşteriler</a></li>
+                    <li><a href="/Urunler/KritikStok/">Kritik Stok @Html.Action("StokCount", "Urunler")</a></li>
+                    <li><a href="/Urunler/StokGrafik/">Stok Grafiği</a></li>
+                    <li><a href="/TumSatislar/Index/">Tüm Satışlar</a></li>
+                    <li><a href="/Iptal/Index">İptal</a></li>
+
+                </ul>
+                <div class=" nav navbar-right dropdown">
+                    <a href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-align-justify" style="position:relative; top:16px; left:-20px ;color:grey"></span><label style="position:relative; top:16px; left:-20px ;color:grey">&nbsp; Menü</label></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Log/Index/"><span class="glyphicon glyphicon-modal-window"></span> Kayıt</a></li>
+                        <li><a href="/Guvenlik/GirisYap/"><span class="glyphicon glyphicon-off"></span> Çıkış Yap</a></li>
+                    </ul>
+                </div>
+            }
+
+            @if (User.IsInRole("Kullanıcı"))
+            {
+                <ul class=" nav navbar-nav">
+                    <li><a href="/Iptal/Index">Siparişlerim</a></li>                    
+                    <li><a href="/Default/Index/">Yardım</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/Sepet/Index/"><span class="glyphicon glyphicon-shopping-cart"></span> Sepetim<label style="color:red ">@{Html.RenderAction("SepetCount", "Sepet");}</label></a></li>
+                </ul>
+                <div class=" nav navbar-right dropdown">                                                                                                                                                                        
+                    <a href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-align-justify" style="position:relative; top:16px; color:grey"></span><label style="position:relative; top:16px; color:grey">&nbsp; Menü</label></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Log/Index/"><span class="glyphicon glyphicon-modal-window"></span> Kayıt</a></li>
+                        <li><a href="/Guvenlik/GirisYap/"><span class="glyphicon glyphicon-off"></span> Çıkış Yap</a></li>
+                    </ul>
+                </div>
+             }
+
+
+
+            @*<div class=" nav navbar-right dropdown">
+            <a href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-off" width="16" height="16" style="position: relative; top:16px; color:grey"></span></a>
+            <ul class="dropdown-menu">
+                <li><a href="/Log/Index/">Kayıt</a></li>
+                <li><a href="/Guvenlik/GirisYap/"><span class="glyphicon glyphicon-off"></span> Çıkış Yap</a></li>
+            </ul>
+        </div>*@
+
+
+
+        </div>
+            
+
+    </nav>
+
+    <div class="container">
+        @RenderBody()
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/DataTables/dataTables.bootstrap.min.js"></script>
+    <script src="~/Scripts/custom.js"></script>
+    @RenderSection("scripts", false)   
+
+</body>
+</html>
+

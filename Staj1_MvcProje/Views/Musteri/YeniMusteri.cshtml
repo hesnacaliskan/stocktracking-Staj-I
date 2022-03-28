@@ -1,0 +1,28 @@
+﻿@model Staj1_MvcProje.Models.Entity.TBLMUSTERILER
+@{
+    ViewBag.Title = "YeniMusteri";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<form method="post" class="form-group">
+    <div>
+        <label>Müşteri Adı</label>
+        @Html.TextBoxFor(m => m.MUSTERIAD, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.MUSTERIAD, "", new { @style = "color:orange" })
+    </div>
+    <div>
+        <label>Müşteri Soyadı</label>
+        @Html.TextBoxFor(m => m.MUSTERISOYAD, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.MUSTERISOYAD, "", new { @style = "color:orange" })
+    </div>
+    <br />
+    <div>
+        <label>Statüsü</label>
+        @Html.TextBoxFor(m => m.STATUS, new { @class = "form-control" })
+    </div>    
+    
+    <div style="margin-top:15px">
+        <button class="btn btn-info">Müşteri Ekle</button>
+    </div>
+</form>
+

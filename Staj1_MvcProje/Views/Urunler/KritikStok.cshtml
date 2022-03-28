@@ -1,0 +1,38 @@
+﻿@using Staj1_MvcProje.Models.Entity
+@model List<TBLURUNLER>
+@{
+    ViewBag.Title = "KritikStok";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>Kalan Stok</h2>
+
+<table class=" table table-bordered">
+    <tr>
+        <th>ÜRÜN BİLGİSİ</th>
+        <th>STOK</th>
+    </tr>
+
+    @foreach (var stok in Model)
+    {
+
+
+
+        if (stok.STOK < 50)
+        {
+            <tr style="background-color: #D6231E; color: white ">
+                <td>@stok.URUNAD</td>
+                <td>@stok.STOK</td>
+            </tr>
+        }
+        
+        if (stok.STOK == 50)
+        {
+            <tr style="background-color:yellow">
+                <td>@stok.URUNAD</td>
+                <td>@stok.STOK</td>
+            </tr>
+        }
+    }
+
+</table>

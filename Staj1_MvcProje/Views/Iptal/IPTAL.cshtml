@@ -1,0 +1,28 @@
+﻿@model Staj1_MvcProje.Models.Entity.TBLSATISLAR
+@{
+    ViewBag.Title = "IPTAL";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@*<div class=" modal-header">
+        <h2>İptal Etme Ekranı</h2>
+    </div>*/*@
+
+<div class="container">
+    @using (Html.BeginForm("IPTAL", "Iptal", FormMethod.Post))
+    {
+        <div class=" modal-body">
+
+            <div class="form-group text-center" method="post" style="font-size:15px; color:red">
+                İptal Etme Sebebiniz:
+                <br />
+                @Html.TextBoxFor(m => m.SEBEP, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="modal-footer" style="margin-top:15px; float:right">
+            <button class="btn" style="background-color: #F4817C; color: white ">IPTAL</button>
+        </div>
+    }
+</div>
+
+

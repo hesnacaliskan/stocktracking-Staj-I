@@ -1,0 +1,95 @@
+﻿@model Staj1_MvcProje.Models.Entity.TBLKULLANICI
+@{
+    Layout = null;
+}
+
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ 
+    <title>Giriş Yap</title>
+    <link rel="shortcut icon" href="~/icon.ico" type="image/x-icon" />
+    <!-- Meta-Tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Business Login Form a Responsive Web Template, Bootstrap Web Templates, Flat Web Templates, Android Compatible Web Template, Smartphone Compatible Web Template, Free Webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design">
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!-- //Meta-Tags -->
+    <!-- css files -->
+    <link href="/web/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/web/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- //css files -->
+    <!-- google fonts -->
+    <link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <!-- //google fonts -->
+
+</head>
+<body>
+    
+    <div class="signupform">
+        <div class="container">
+            <!-- main content -->
+            <div class="agile_info">
+                <div class="w3l_form">
+                    <div class="left_grid_info">
+                        <h1>İşletme hesabınızı yönetin</h1>
+                        <p>Çok basit ve kısa yolla işletmenizi istediğiniz gibi kontrol edin.</p>
+                        <img src="~/web/images/finance.png" alt="" />
+                    </div>
+                </div>
+                <div class="w3_info">
+                    <h2>GİRİŞ YAP</h2>
+                    <p>Bilgilerinizi giriniz.</p>                    
+                    @ViewBag.Mesaj  
+                    @using (Html.BeginForm("GirisYap", "Guvenlik", FormMethod.Post))
+                    {
+                        <label>Email Adresi</label>
+                        <div class="input-group">
+                            <span class="fa fa-envelope" aria-hidden="true"></span>
+                            <input type="email" placeholder="Email Adresinizi giriniz." required="" name="AD">
+                        </div>
+                        <label>Şifre</label>
+                        <div class="input-group">
+                            <span class="fa fa-lock" aria-hidden="true"></span>
+                            <input type="Password" placeholder="Şifrenizi giriniz." required="" name="ŞİFRE">
+                        </div>
+                        <div class="login-check">
+                            <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i> Beni Hatırla</label>
+                            @*<label>
+                                @Html.CheckBoxFor(m => m.BeniHatirla)
+                                Beni Hatırla
+                            </label>*@
+                        </div>                 
+                        <button class="btn btn-block" style="background-color: #e65c00; color: white " type="submit">GİRİŞ YAP</button>
+
+
+                    }
+                    <p class="account">Giriş Yap'a tıklayarak,<a href="#">Şartlar & Koşullar</a> kabul etmiş olursunuz!</a></p>
+                    <p class="account1">Hesabınız yok mu? <a href="/Kullanici/KayitOl/">Şimdi kaydol!</a></p>
+                </div>
+            </div>
+            <!-- //main content -->
+        </div>
+        <!-- footer -->
+        @*<div class="footer">
+                <p>&copy; 2019 Business login form. All Rights Reserved | Design by <a href="https://w3layouts.com/" target="blank">W3layouts</a></p>
+            </div>*@
+        <!-- footer -->
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+﻿@using Staj1_MvcProje.Models.Entity
+@using PagedList;
+@using PagedList.Mvc;
+@model List<TBLSATISLAR>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@if (User.IsInRole("Admin"))
+{
+    <h2>İptal Edilen Siparişler</h2>
+    <br />
+}
+@if (User.IsInRole("Kullanıcı"))
+{
+    <h2>Siparişlerim</h2>
+    <br />
+}
+
+<table class=" table table-bordered" id="tblIptal">
+
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>MÜŞTERİ ADI</th>
+            <th>SOYADI</th>
+            <th>ÜRÜN ADI</th>
+            <th>ADET</th>
+            <th>FİYAT</th>
+            <th>TARİH</th>
+            <th>İPTAL</th>
+            @if (User.IsInRole("Admin"))
+            {
+                <th>İPTAL SEBEBİ</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var satis in Model)
+        {
+            <tr>
+                <td>@satis.SATISID</td>
+                <td>@satis.TBLKULLANICI.ISIM</td>
+                <td>@satis.TBLKULLANICI.SOYISIM</td>
+                <td>@satis.TBLURUNLER.URUNAD</td>
+                <td>@satis.ADET</td>
+                <td>@satis.FIYAT</td>
+                <td>@Convert.ToDateTime(satis.TARIH).ToString("dd/MM/yy")</td>
+
+                @if ((bool)(@satis.STATUS == true || @satis.STATUS == null))
+                {
+                    <td><a href="/Iptal/IPTAL/@satis.SATISID" class="btn" style="background-color: #EA640D; color: white ">İPTAL</a></td>
+
+                    @*<td><button id="sebep" onclick="getid('@satis.SATISID')" class="btn" style="background-color: #EA640D; color: white ">İPTAL</button></td>*@
+
+                }
+                else
+                {
+                    <td>İptal Edildi</td>
+                }
+
+                @if (User.IsInRole("Admin"))
+                {
+                    <td>@satis.SEBEP</td>
+
+                }
+            </tr>           
+        }
+
+    </tbody>
+</table>

@@ -1,0 +1,24 @@
+﻿@model Staj1_MvcProje.Models.Entity.TBLMUSTERILER
+@{
+    ViewBag.Title = "MusteriGuncel";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@using (Html.BeginForm("Guncelle", "Musteri", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.MUSTERIID)
+        @Html.TextBoxFor(m => m.MUSTERIID, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(m => m.MUSTERIAD)
+        @Html.TextBoxFor(m => m.MUSTERIAD, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(m => m.MUSTERISOYAD)
+        @Html.TextBoxFor(m => m.MUSTERISOYAD, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <button class="btn" style="background-color: #869bd9; color: white ">Müşteri Güncelle</button>
+    </div>
+}
+
+

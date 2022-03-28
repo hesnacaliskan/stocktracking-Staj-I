@@ -1,0 +1,38 @@
+﻿@model Staj1_MvcProje.Models.Entity.TBLSEPETT
+@{
+    ViewBag.Title = "SatinAl";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div class=" modal-header">
+    <h2>Satın Al</h2>
+</div>
+
+<div class="container">
+    @using (Html.BeginForm("SatinAl2", "Satis", FormMethod.Post))
+    {
+        <div class=" modal-body">
+            @Html.HiddenFor(m => m.ID)
+            <div class="form-group">
+                Kullanıcı Ad-soyad : @Session["Ad"] @Session["Soyad"]
+            </div>
+            <div class="form-group">
+                Ürün Bilgisi: @Html.DisplayFor(m => m.TBLURUNLER.URUNAD, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                Adet : @Html.DisplayFor(m => m.ADET, new { @class = "form-control" })
+            </div>
+            <div class="form-group text-center" style="font-size:15px; color:red">
+                Fiyat: @Html.DisplayFor(m => m.FIYAT, new { @class = "form-control" })
+            </div>
+        </div>
+        <div  class="modal-footer" style="margin-top:15px; float:right">
+            <button class="btn" style="background-color: #F4817C; color: white ">Satın Al</button>
+            <a href="/Sepet/Index" class="btn" style="background-color: #E2A867; color: white ">İptal</a>
+        </div>
+    }
+</div>
+
+
+
+
